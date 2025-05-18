@@ -1,0 +1,96 @@
+<html>
+  <head>
+    <title>INST377 Lab 4</title>
+    <style>
+      body {
+        background-color: lightblue;
+        font-family: "Georgia", serif;
+        margin: 5px;
+      }
+
+      .section {
+        background-color: pink;
+        color: white;
+        border: 3px solid white;
+        border-radius: 10px;
+        padding: 15px;
+        margin: 10px;
+        display: inline-block;
+        width: 40%;
+        text-align: center;
+      }
+
+      form {
+        display: inline;
+      }
+
+      input,
+      button {
+        margin-left: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="mainHeading">INST377 Lab 4</h1>
+
+    <!--  Alert Me -->
+    <div class="section">
+      <form name="alertForm" onsubmit="return alertUser()">
+        <label for="nameInput">Name:</label>
+        <input type="text" id="nameInput" required />
+        <button type="submit">Alert Me</button>
+      </form>
+    </div>
+
+    <!--  Change Color -->
+    <div class="section">
+      <button onclick="changePageColor()">Change Color</button>
+    </div>
+
+    <!-- Text Tester -->
+    <div class="section">
+      <form name="textForm" onsubmit="return validateText()">
+        <label for="textInput"> Text Tester: </label>
+        <input type="text" id="textInput" />
+        <button type="submit">Validate Text</button>
+      </form>
+    </div>
+
+    <!-- Add Text -->
+    <div class="section">
+      <button onclick="addHeadingText()">Add Text</button>
+    </div>
+
+    <script type="text/javascript">
+      function alertUser() {
+        var name = document.getElementById("nameInput").value;
+        alert("Hi " + name + "!");
+        return false;
+      }
+
+      var currentColor = "blue";
+      function changePageColor() {
+        if (currentColor == "blue") {
+          document.body.style.backgroundColor = "orange";
+          currentColor = "orange";
+        } else {
+          document.body.style.backgroundColor = "blue";
+          currentColor = "blue";
+        }
+      }
+
+      function validateText() {
+        var text = document.getElementById("textInput").value;
+        var validation = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+        if (validation.test(text)) {
+          alert("how about nahhh...");
+          return false;
+        }
+      }
+
+      function addHeadingText() {
+        document.getElementById("mainHeading").innerText += " Add Text";
+      }
+    </script>
+  </body>
+</html>
